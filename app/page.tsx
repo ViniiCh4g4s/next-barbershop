@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import Header from "@/components/header"
 import { Input } from "@/components/ui/input"
-import { SearchIcon } from "lucide-react"
+import { EyeIcon, FootprintsIcon, SearchIcon } from "lucide-react"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -9,8 +9,13 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { db } from "@/lib/prisma"
 import BarbershopItem from "@/components/barbershop-item"
 export default async function Home() {
-  // Chamando meu banco de Dados
+  // Chamando meu Banco de Dados
   const barbershops = await db.barbershop.findMany({})
+  const popularBarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  })
 
   return (
     <div>
@@ -26,6 +31,35 @@ export default async function Home() {
           <Input placeholder="Faça sua busca..." />
           <Button>
             <SearchIcon />
+          </Button>
+        </div>
+
+        {/*Busca Rápida*/}
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+            <Image src="/cabelo.svg" alt="Cabelo" width={16} height={16} />
+            Cabelo
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Image src="/barba.svg" alt="Barba" width={16} height={16} />
+            Barba
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/acabamento.svg"
+              alt="Acabamento"
+              width={16}
+              height={16}
+            />
+            Acabamento
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <FootprintsIcon size={16} />
+            Pézinho
+          </Button>
+          <Button className="gap-2" variant="secondary">
+            <EyeIcon size={16} />
+            Sobrancelha
           </Button>
         </div>
 
@@ -79,7 +113,27 @@ export default async function Home() {
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
+
+        {/*Populares*/}
+        <h2 className="mt-6 mb-3 text-xs font-bold text-gray-400 uppercase">
+          Populares
+        </h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularBarbershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
+
+      <footer>
+        <Card>
+          <CardContent className="px-5 py-6">
+            <p className="text-sm text-gray-400">
+              © 2023 Copyright <span className="font-bold">FSW Barber</span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   )
 }
