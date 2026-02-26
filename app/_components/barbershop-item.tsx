@@ -1,9 +1,9 @@
 import React from "react"
 import { Barbershop } from "@/app/generated/prisma/client"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/app/_components/ui/card"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { Button } from "@/app/_components/ui/button"
+import { Badge } from "@/app/_components/ui/badge"
 import { StarIcon } from "lucide-react"
 import Link from "next/link"
 

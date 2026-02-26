@@ -1,7 +1,7 @@
 import React from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import { Card, CardContent } from "@/app/_components/ui/card"
+import { Badge } from "@/app/_components/ui/badge"
+import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 
 // TODO: Implementar agendamento real
 const BookingItem = () => {
