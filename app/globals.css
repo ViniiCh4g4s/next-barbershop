@@ -55,13 +55,12 @@
 
 @layer base {
   * {
-    /* Agora o border-border vai funcionar porque definimos no @theme acima */
     @apply border-border antialiased;
   }
   html, body {
     @apply h-full;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground h-full;
   }
 }
