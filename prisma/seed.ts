@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client"
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 async function main() {
   try {
@@ -26,7 +26,7 @@ async function main() {
       "https://utfs.io/f/9f0847c2-d0b8-4738-a673-34ac2b9506ec-17r.png",
       "https://utfs.io/f/07842cfb-7b30-4fdc-accc-719618dfa1f2-17s.png",
       "https://utfs.io/f/0522fdaf-0357-4213-8f52-1d83c3dcb6cd-18e.png",
-    ];
+    ]
 
     // Nomes criativos para as barbearias
     const creativeNames = [
@@ -40,7 +40,7 @@ async function main() {
       "Aparência Impecável",
       "Estilo Urbano",
       "Estilo Clássico",
-    ];
+    ]
 
     // Endereços fictícios para as barbearias
     const addresses = [
@@ -54,7 +54,7 @@ async function main() {
       "Praça da Aparência, 505",
       "Rua Urbana, 606",
       "Avenida Clássica, 707",
-    ];
+    ]
 
     const services = [
       {
@@ -99,12 +99,12 @@ async function main() {
         imageUrl:
           "https://utfs.io/f/8a457cda-f768-411d-a737-cdb23ca6b9b5-b3pegf.png",
       },
-    ];
+    ]
 
     // Limpar dados antigos para evitar duplicatas ao rodar o seed novamente
-    await prisma.booking.deleteMany();
-    await prisma.barbershopService.deleteMany();
-    await prisma.barbershop.deleteMany();
+    await prisma.booking.deleteMany()
+    await prisma.barbershopService.deleteMany()
+    await prisma.barbershop.deleteMany()
 
     // Criar barbearias
     for (let i = 0; i < 10; i++) {
@@ -114,7 +114,8 @@ async function main() {
           address: addresses[i],
           imageUrl: images[i],
           phones: ["(11) 99999-9999"],
-          description: "Lorem ipsum dolor sit amet...",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac augue ullamcorper, pharetra orci mollis, auctor tellus. Phasellus pharetra erat ac libero efficitur tempus. Donec pretium convallis iaculis. Etiam eu felis sollicitudin, cursus mi vitae, iaculis magna. Nam non erat neque. In hac habitasse platea dictumst. Pellentesque molestie accumsan tellus id laoreet.",
           services: {
             createMany: {
               data: services.map((service) => ({
@@ -126,16 +127,16 @@ async function main() {
             },
           },
         },
-      });
+      })
     }
 
-    console.log("Seed finalizado com sucesso!");
+    console.log("Seed finalizado com sucesso!")
   } catch (error) {
-    console.error("Erro no seed:", error);
-    process.exit(1);
+    console.error("Erro no seed:", error)
+    process.exit(1)
   } finally {
-    await prisma.$disconnect();
+    await prisma.$disconnect()
   }
 }
 
-main();
+main()
