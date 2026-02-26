@@ -3,7 +3,6 @@ import Header from "@/app/_components/header"
 import { Input } from "@/app/_components/ui/input"
 import { SearchIcon } from "lucide-react"
 import Image from "next/image"
-import { Card, CardContent } from "@/app/_components/ui/card"
 import { db } from "@/app/_lib/prisma"
 import BarbershopItem from "@/app/_components/barbershop-item"
 import { quickSearchOptions } from "@/app/_constants/search"
@@ -82,16 +81,6 @@ export default async function Home() {
           ))}
         </div>
       </div>
-
-      <footer>
-        <Card>
-          <CardContent className="px-5 py-6">
-            <p className="text-sm text-gray-400">
-              © 2023 Copyright <span className="font-bold">FSW Barber</span>
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   )
 }
