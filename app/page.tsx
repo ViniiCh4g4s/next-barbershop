@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button"
-import Header from "@/components/header"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/app/_components/ui/button"
+import Header from "@/app/_components/header"
+import { Input } from "@/app/_components/ui/input"
 import { SearchIcon } from "lucide-react"
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { db } from "@/lib/prisma"
-import BarbershopItem from "@/components/barbershop-item"
+import { Card, CardContent } from "@/app/_components/ui/card"
+import { db } from "@/app/_lib/prisma"
+import BarbershopItem from "@/app/_components/barbershop-item"
 import { quickSearchOptions } from "@/app/_constants/search"
-import BookingItem from "@/components/booking-item"
+import BookingItem from "@/app/_components/booking-item"
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({})
